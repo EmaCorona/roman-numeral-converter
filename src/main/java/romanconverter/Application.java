@@ -13,7 +13,6 @@ public class Application {
     private static final int ROMAN_TO_INTEGER = 2;
     private static final Scanner scanner = new Scanner(System.in);
 
-
     public static void main(String[] args) {
         while (true) {
             int choice = showMenu();
@@ -37,8 +36,8 @@ public class Application {
     private static int showMenu() {
         System.out.println(Menu.HEADER);
         System.out.println(Menu.EXIT);
-        System.out.println(Menu.ROMAN_TO_INTEGER);
-        System.out.println(Menu.INTEGER_TO_ROMAN + ApplicationConst.NEW_LINE);
+        System.out.println(Menu.INTEGER_TO_ROMAN);
+        System.out.println(Menu.ROMAN_TO_INTEGER + ApplicationConst.NEW_LINE);
         System.out.print(Menu.OPTION_SELECTION);
 
         int choice;
@@ -52,7 +51,7 @@ public class Application {
     }
 
     private static void printIntegerToRomanMenu() {
-        System.out.print(ApplicationConst.NEW_LINE + "Insert a number to convert: ");
+        System.out.print(ApplicationConst.NEW_LINE + Menu.INSERT_INTEGER_NUMBER);
 
         while (!scanner.hasNextInt()) {
             System.err.print(Menu.OPTION_NOT_VALID);
@@ -60,7 +59,7 @@ public class Application {
         }
 
         String romanString = convertIntegerToRoman(scanner.nextInt());
-        System.out.println("Result of conversion: " + romanString + ApplicationConst.NEW_LINE);
+        System.out.println(Menu.RESULT_OF_CONVERSION + romanString + ApplicationConst.NEW_LINE);
     }
 
     private static String convertIntegerToRoman(int number) {
@@ -69,13 +68,13 @@ public class Application {
     }
 
     private static void printRomanToIntegerMenu() {
-        System.out.print(ApplicationConst.NEW_LINE + "Insert a Roman Number to convert: ");
+        System.out.print(ApplicationConst.NEW_LINE + Menu.INSERT_ROMAN_NUMERAL);
         int romanNumber = convertRomanToInteger(scanner.next());
 
         if (romanNumber != 0) {
-            System.out.println("Result of conversion: " + romanNumber + ApplicationConst.NEW_LINE);
+            System.out.println(Menu.RESULT_OF_CONVERSION + romanNumber + ApplicationConst.NEW_LINE);
         } else {
-            System.out.println("Inserted wrong value, please retry with another value" + ApplicationConst.NEW_LINE);
+            System.out.println(Menu.VALUE_NOT_VALID + ApplicationConst.NEW_LINE);
         }
     }
 
