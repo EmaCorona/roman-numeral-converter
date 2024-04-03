@@ -1,4 +1,4 @@
-package converter;
+package romanconverter.converter;
 
 public class RomanToIntegerConverter {
     public Long convert() {

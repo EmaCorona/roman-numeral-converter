@@ -1,12 +1,14 @@
-import util.ApplicationConst;
-import util.ApplicationConst.Menu;
+package romanconverter;
+
+import romanconverter.util.ApplicationConst;
+import romanconverter.util.ApplicationConst.Menu;
 
 import java.util.Scanner;
 
 public class Application {
     private static final int EXIT = 0;
-    private static final int ROMAN_TO_INTEGER = 1;
-    private static final int INTEGER_TO_ROMAN = 2;
+    private static final int INTEGER_TO_ROMAN = 1;
+    private static final int ROMAN_TO_INTEGER = 2;
     private static final Scanner scanner = new Scanner(System.in);
 
 
@@ -18,12 +20,12 @@ public class Application {
                 case EXIT: {
                     return;
                 }
-                case ROMAN_TO_INTEGER: {
-                    System.out.println("ROMAN_TO_INTEGER");
-                    break;
-                }
                 case INTEGER_TO_ROMAN: {
                     System.out.println("INTEGER_TO_ROMAN");
+                    break;
+                }
+                case ROMAN_TO_INTEGER: {
+                    System.out.println("ROMAN_TO_INTEGER");
                     break;
                 }
             }

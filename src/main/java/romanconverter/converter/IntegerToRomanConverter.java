@@ -1,9 +1,9 @@
-package converter;
+package romanconverter.converter;
 
 public class IntegerToRomanConverter {
-    protected int number;
-    protected int romanNumber;
-    protected String romanString;
+    private int number;
+    private int romanNumber;
+    private String romanString;
 
     public IntegerToRomanConverter(int number) {
         this.number = number;
