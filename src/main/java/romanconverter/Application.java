@@ -1,5 +1,6 @@
 package romanconverter;
 
+import romanconverter.converter.IntegerToRomanConverter;
 import romanconverter.util.ApplicationConst;
 import romanconverter.util.ApplicationConst.Menu;
 
@@ -21,7 +22,7 @@ public class Application {
                     return;
                 }
                 case INTEGER_TO_ROMAN: {
-                    System.out.println("INTEGER_TO_ROMAN");
+                    printIntegerToRomanMenu();
                     break;
                 }
                 case ROMAN_TO_INTEGER: {
@@ -32,7 +33,7 @@ public class Application {
         }
     }
 
-    public static int showMenu() {
+    private static int showMenu() {
         System.out.println(Menu.HEADER);
         System.out.println(Menu.EXIT);
         System.out.println(Menu.ROMAN_TO_INTEGER);
@@ -47,5 +48,22 @@ public class Application {
         }
 
         return choice;
+    }
+
+    private static void printIntegerToRomanMenu() {
+        System.out.print(ApplicationConst.NEW_LINE + "Insert a number to convert: ");
+
+        while (!scanner.hasNextInt()) {
+            System.err.print(Menu.OPTION_NOT_VALID);
+            scanner.next(); // Consuma l'input non valido
+        }
+
+        String romanNumber = convertIntegerToRoman(scanner.nextInt());
+        System.out.println("Result of conversion: " + romanNumber + ApplicationConst.NEW_LINE);
+    }
+
+    private static String convertIntegerToRoman(int number) {
+        IntegerToRomanConverter converter = new IntegerToRomanConverter(number);
+        return converter.convert();
     }
 }

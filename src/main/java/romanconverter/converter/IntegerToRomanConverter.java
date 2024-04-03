@@ -1,48 +1,48 @@
 package romanconverter.converter;
 
 public class IntegerToRomanConverter {
-    private int number;
+    private int numberToConvert;
     private int romanNumber;
-    private String romanString;
+    private String romanString = "";
 
     public IntegerToRomanConverter(int number) {
-        this.number = number;
+        this.numberToConvert = number;
     }
 
     public String convert() {
-        while (number > 0) {
-            if (number >= 1000) {
+        while (numberToConvert > 0) {
+            if (numberToConvert >= 1000) {
                 addValue(1000, 'M');
 
-            } else if (number >= 500) {
+            } else if (numberToConvert >= 500) {
                 if (checkLongComposedNumber(900, "CM")) {
                     continue;
                 }
 
                 addValue(500, 'D');
 
-            } else if (number >= 100) {
+            } else if (numberToConvert >= 100) {
                 if (checkLongComposedNumber(400, "CD")) {
                     continue;
                 }
 
                 addValue(100, 'C');
 
-            } else if (number >= 50) {
+            } else if (numberToConvert >= 50) {
                 if (checkLongComposedNumber(90, "XC")) {
                     continue;
                 }
 
                 addValue(50, 'L');
 
-            } else if (number >= 10) {
+            } else if (numberToConvert >= 10) {
                 if (checkLongComposedNumber(40, "XL")) {
                     continue;
                 }
 
                 addValue(10, 'X');
 
-            } else if (number >= 5) {
+            } else if (numberToConvert >= 5) {
                 if (checkShortComposedNumber(9, "IX")) {
                     break;
                 }
@@ -50,12 +50,12 @@ public class IntegerToRomanConverter {
                 romanString += "V";
                 romanNumber = 5;
 
-                while (romanNumber < number) {
+                while (romanNumber < numberToConvert) {
                     romanString += "I";
                     romanNumber++;
                 }
 
-                number -= romanNumber;
+                numberToConvert -= romanNumber;
             } else {
                 if (checkShortComposedNumber(4, "IV")) {
                     break;
@@ -63,36 +63,36 @@ public class IntegerToRomanConverter {
 
                 romanString += "I";
                 romanNumber++;
-                number--;
+                numberToConvert--;
             }
         }
 
         return romanString;
     }
 
-    private boolean checkShortComposedNumber(int n, String value) {
-        if (number == n) {
-            romanString += value;
+    private boolean checkShortComposedNumber(int number, String romanString) {
+        if (this.numberToConvert == number) {
+            this.romanString += romanString;
             return true;
         }
 
         return false;
     }
 
-    private boolean checkLongComposedNumber(int n, String value) {
-        if (number >= n) {
-            romanString += value;
-            romanNumber = n;
-            number -= romanNumber;
+    private boolean checkLongComposedNumber(int number, String romanString) {
+        if (this.numberToConvert >= number) {
+            this.romanString += romanString;
+            this.romanNumber = number;
+            this.numberToConvert -= this.romanNumber;
             return true;
         }
 
         return false;
     }
 
-    private void addValue(int n, char value) {
-        romanNumber = n;
-        romanString += value;
-        number -= romanNumber;
+    private void addValue(int number, char romanString) {
+        this.romanNumber = number;
+        this.romanString += romanString;
+        this.numberToConvert -= this.romanNumber;
     }
 }
